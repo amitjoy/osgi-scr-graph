@@ -16,10 +16,10 @@
 package in.bytehue.osgi.scr.graph.provider;
 
 import static java.util.stream.Collectors.toList;
+import static org.jgrapht.nio.DefaultAttribute.createAttribute;
 import static org.osgi.service.component.runtime.dto.ComponentConfigurationDTO.ACTIVE;
 import static org.osgi.service.component.runtime.dto.ComponentConfigurationDTO.SATISFIED;
 
-import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -32,8 +32,8 @@ import org.jgrapht.alg.util.Pair;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.nio.Attribute;
-import org.jgrapht.nio.DefaultAttribute;
 import org.jgrapht.nio.dot.DOTExporter;
+import org.osgi.framework.Constants;
 import org.osgi.framework.dto.ServiceReferenceDTO;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -102,23 +102,23 @@ public final class ScrGraphProvider implements ScrGraph {
     }
 
     @Override
-    public String exportAsDOT(final Graph<ScrComponent, DefaultEdge> graph) {
+    public void exportGraph(final Graph<ScrComponent, DefaultEdge> graph, final Writer writer) {
         final DOTExporter<ScrComponent, DefaultEdge> exporter = new DOTExporter<>();
         exporter.setVertexAttributeProvider(v -> {
             final Map<String, Attribute> map = new LinkedHashMap<>();
-            map.put("label", DefaultAttribute.createAttribute(createGraphLabel(v)));
+            map.put("label", createAttribute(createVertexLabel(v)));
+            // TODO change format a bit for plain OSGi services
             return map;
         });
-        final Writer writer = new StringWriter();
         exporter.exportGraph(graph, writer);
-        return writer.toString();
     }
 
-    private String createGraphLabel(final ScrComponent component) {
+    private String createVertexLabel(final ScrComponent component) {
         if (component.description != null) {
             return component.description.name + " [" + component.configuration.id + "]";
         }
-        return String.valueOf(component.reference.id);
+        final String objectClass = (String) component.reference.properties.get(Constants.OBJECTCLASS);
+        return objectClass + " [" + component.reference.id + "]";
     }
 
     private void prepareComponents(final List<ScrComponent> components) {
@@ -183,6 +183,7 @@ public final class ScrGraphProvider implements ScrGraph {
             final ServiceReferenceDTO reference) {
 
         final ScrComponent component = new ScrComponent();
+
         component.description = description;
         component.configuration = configuration;
         component.reference = reference;

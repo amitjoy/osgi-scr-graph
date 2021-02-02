@@ -15,6 +15,7 @@
  ******************************************************************************/
 package in.bytehue.osgi.scr.graph.api;
 
+import java.io.Writer;
 import java.util.List;
 
 import org.jgrapht.Graph;
@@ -156,12 +157,11 @@ public interface ScrGraph {
     Graph<ScrComponent, DefaultEdge> getCyclesAsGraph(boolean includeNonScrServiceReferences);
 
     /**
-     * Returns the string representation of DOT file.
+     * Exports the specified graph into DOT representation.
      *
      * @param graph the graph to be exported
-     *
-     * @return the string representation of DOT
+     * @param writer the writer to which the graph to be exported
      */
-    String exportAsDOT(Graph<ScrComponent, DefaultEdge> graph);
+    void exportGraph(Graph<ScrComponent, DefaultEdge> graph, Writer writer);
 
 }
