@@ -57,8 +57,6 @@ public interface ScrGraph {
      * hence multiple invocations of this method will result in same results.
      *
      * @return the {@link Graph} instance
-     *
-     * @see #getGraph(boolean)
      */
     Graph<ScrComponent, DefaultEdge> getGraph();
 
@@ -76,10 +74,29 @@ public interface ScrGraph {
      * hence multiple invocations of this method will result in same results.
      *
      * @return the {@link List} of all cycles (will never be {@code null})
-     *
-     * @see #getCycles(boolean)
      */
     List<List<ScrComponent>> getCycles();
+
+    /**
+     * Returns the graph cycle containing the specified components
+     *
+     * <p>
+     * <b>Note that</b>, by default it makes use of Tarjan algorithm to
+     * find out all the cycles and it will not include any service reference
+     * which is not exported using OSGi Declarative Services.
+     *
+     * <p>
+     * <b>Also note that</b>, this is an <b>idempotent operation</b> and
+     * hence multiple invocations of this method will result in same results.
+     *
+     * @param components the components that are part of the cycle
+     *
+     * @return the {@link Graph} instance
+     *
+     * @see #getCycles()
+     * @see #getCyclesAsGraph()
+     */
+    Graph<ScrComponent, DefaultEdge> getCycleAsGraph(List<ScrComponent> components);
 
     /**
      * Returns the graph containing all the cycles.
@@ -94,8 +111,6 @@ public interface ScrGraph {
      * hence multiple invocations of this method will result in same results.
      *
      * @return the {@link Graph} instance
-     *
-     * @see #getCyclesAsGraph(boolean)
      */
     Graph<ScrComponent, DefaultEdge> getCyclesAsGraph();
 

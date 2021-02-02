@@ -71,6 +71,18 @@ public final class ScrGraphProvider implements ScrGraph {
     }
 
     @Override
+    public Graph<ScrComponent, DefaultEdge> getCycleAsGraph(final List<ScrComponent> components) {
+        final List<Pair<ScrComponent, ScrComponent>> edges = new ArrayList<>();
+        Node<ScrComponent> node = CircularLinkedList.createLinkedList(components);
+        for (int i = 0; i < components.size(); i++) {
+            node = node.getNext();
+            final Pair<ScrComponent, ScrComponent> pair = new Pair<>(node.getData(), node.getNext().getData());
+            edges.add(pair);
+        }
+        return buildGraph(components, edges);
+    }
+
+    @Override
     public Graph<ScrComponent, DefaultEdge> getCyclesAsGraph() {
         final List<List<ScrComponent>> cycles = getCycles();
         final List<Pair<ScrComponent, ScrComponent>> edges = new ArrayList<>();

@@ -63,7 +63,11 @@ public final class ScrGraphCommand {
             //
             @Descriptor("Displays the chain without SCR component names") //
             @Parameter(absentValue = "false", presentValue = "true", names = "-r") //
-            final boolean removeComponentName) {
+            final boolean removeComponentName,
+            //
+            @Descriptor("Returns the DOT of the cycle having this serial number") //
+            @Parameter(absentValue = "0", names = "-no") //
+            final int serialNo) {
 
         final List<List<ScrComponent>> cycles = scrGraph.getCycles();
 
@@ -71,11 +75,23 @@ public final class ScrGraphCommand {
             return "No SCR cycle exists";
         }
         if (!showPlain) {
-            final Graph<ScrComponent, DefaultEdge> cyclesAsGraph = scrGraph.getCyclesAsGraph();
-            final Writer writer = new StringWriter();
-            scrGraph.exportGraph(cyclesAsGraph, writer);
+            if (serialNo == 0) {
+                final Graph<ScrComponent, DefaultEdge> cyclesAsGraph = scrGraph.getCyclesAsGraph();
+                final Writer writer = new StringWriter();
+                scrGraph.exportGraph(cyclesAsGraph, writer);
 
-            return writer.toString();
+                return writer.toString();
+            } else {
+                if (serialNo > cycles.size()) {
+                    return "Not a valid serial number";
+                }
+                final Graph<ScrComponent, DefaultEdge> cyclesAsGraph = scrGraph
+                        .getCycleAsGraph(cycles.get(serialNo - 1));
+                final Writer writer = new StringWriter();
+                scrGraph.exportGraph(cyclesAsGraph, writer);
+
+                return writer.toString();
+            }
         } else {
             final StringBuilder builder = new StringBuilder();
             int serial = 0;
@@ -83,12 +99,12 @@ public final class ScrGraphCommand {
                 final Function<ScrComponent, String> componentFn = //
                         c -> removeComponentName ? String.valueOf(c.configuration.id) : createVertexLabel(c);
                 // @formatter:off
-                builder.append(++serial + "> ");
-                builder.append(
-                        group.stream()
-                             .map(componentFn)
-                             .collect(joining(" --> ")));
-                // @formatter:on
+                    builder.append(++serial + "> ");
+                    builder.append(
+                            group.stream()
+                                 .map(componentFn)
+                                 .collect(joining(" --> ")));
+                    // @formatter:on
                 builder.append(System.lineSeparator());
             }
             return builder.toString();
