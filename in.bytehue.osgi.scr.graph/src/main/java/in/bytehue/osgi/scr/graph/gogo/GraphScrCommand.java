@@ -15,23 +15,53 @@
  ******************************************************************************/
 package in.bytehue.osgi.scr.graph.gogo;
 
+import static in.bytehue.osgi.scr.graph.gogo.GraphScrCommand.PID;
+
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.List;
+
 import org.apache.felix.service.command.Descriptor;
 import org.apache.felix.service.command.annotations.GogoCommand;
+import org.jgrapht.Graph;
+import org.jgrapht.graph.DefaultEdge;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
-@GogoCommand(scope = "graph", function = { "scr", "cycle" })
-@Component(service = GraphScrCommand.class, immediate = false)
+import in.bytehue.osgi.scr.graph.api.ScrComponent;
+import in.bytehue.osgi.scr.graph.api.ScrGraph;
+
+@GogoCommand(scope = "scr", function = { "graph", "cycle" })
+@Component(service = GraphScrCommand.class, configurationPid = PID)
 @Descriptor("Comprises Graph Commands for Service Component Runtime (SCR)")
 public final class GraphScrCommand {
 
+    public static final String PID = "in.bytehue.osgi.scr.graph.gogo";
+
+    @Reference
+    private ScrGraph scrGraph;
+
     @Descriptor("Returns DOT Representation of Service Component Runtime (SCR)")
-    public String scr() {
-        return null;
+    public String graph() {
+        final Graph<ScrComponent, DefaultEdge> graph = scrGraph.getGraph();
+
+        final Writer writer = new StringWriter();
+        scrGraph.exportGraph(graph, writer);
+
+        return writer.toString();
     }
 
     @Descriptor("Returns DOT Representation of Cyclic Dependencies of Service Component Runtime (SCR)")
     public String cycle() {
-        return null;
+        final List<List<ScrComponent>> cycles = scrGraph.getCycles();
+        if (cycles.isEmpty()) {
+            return "No SCR cycle exists";
+        }
+        final Graph<ScrComponent, DefaultEdge> cyclesAsGraph = scrGraph.getCyclesAsGraph();
+        final Writer writer = new StringWriter();
+        scrGraph.exportGraph(cyclesAsGraph, writer);
+
+        return writer.toString();
     }
 
 }
