@@ -53,39 +53,24 @@ public final class ScrGraphProvider implements ScrGraph {
 
     @Override
     public Graph<ScrComponent, DefaultEdge> getGraph() {
-        return getGraph(false);
-    }
-
-    @Override
-    public Graph<ScrComponent, DefaultEdge> getGraph(final boolean includeNonScrServiceReferences) {
         final List<ScrComponent> components = new ArrayList<>();
         final List<Pair<ScrComponent, ScrComponent>> edges = new ArrayList<>();
 
         prepareComponents(components);
-        prepareEdges(components, edges, includeNonScrServiceReferences);
+        prepareEdges(components, edges);
         return buildGraph(components, edges);
     }
 
     @Override
     public List<List<ScrComponent>> getCycles() {
-        return getCycles(false);
-    }
-
-    @Override
-    public List<List<ScrComponent>> getCycles(final boolean includeNonScrServiceReferences) {
-        final Graph<ScrComponent, DefaultEdge> graph = getGraph(includeNonScrServiceReferences);
+        final Graph<ScrComponent, DefaultEdge> graph = getGraph();
         final TarjanSimpleCycles<ScrComponent, DefaultEdge> tarjan = new TarjanSimpleCycles<>(graph);
         return tarjan.findSimpleCycles();
     }
 
     @Override
     public Graph<ScrComponent, DefaultEdge> getCyclesAsGraph() {
-        return getCyclesAsGraph(false);
-    }
-
-    @Override
-    public Graph<ScrComponent, DefaultEdge> getCyclesAsGraph(final boolean includeNonScrServiceReferences) {
-        final List<List<ScrComponent>> cycles = getCycles(includeNonScrServiceReferences);
+        final List<List<ScrComponent>> cycles = getCycles();
         final List<Pair<ScrComponent, ScrComponent>> edges = new ArrayList<>();
 
         for (final List<ScrComponent> group : cycles) {
@@ -137,8 +122,7 @@ public final class ScrGraphProvider implements ScrGraph {
 
     private void prepareEdges( //
             final List<ScrComponent> components, //
-            final List<Pair<ScrComponent, ScrComponent>> edges, //
-            final boolean includeNonScrServiceReferences) {
+            final List<Pair<ScrComponent, ScrComponent>> edges) {
 
         final String COMPONENT_NAME_PROPERTY = "component.name";
 
@@ -153,14 +137,9 @@ public final class ScrGraphProvider implements ScrGraph {
                     final String componentNameProperty = (String) srvRefDTO.properties.get(COMPONENT_NAME_PROPERTY);
                     ScrComponent endComponent = null;
                     if (componentNameProperty == null) { // not an SCR
-                        if (includeNonScrServiceReferences) {
-                            endComponent = createComponent(null, null, srvRefDTO);
-                        } else {
-                            break;
-                        }
-                    } else {
-                        endComponent = findComponentByName(components, componentNameProperty);
+                        break;
                     }
+                    endComponent = findComponentByName(components, componentNameProperty);
                     edges.add(new Pair<>(component, endComponent));
                 }
             }
