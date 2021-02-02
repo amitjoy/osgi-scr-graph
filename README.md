@@ -84,7 +84,11 @@ Note that, the command will only work if and only if Felix Gogo bundles are inst
 
 ##### Gogo Command - Cycle Detection
 
+<img width="668" alt="help" src="https://user-images.githubusercontent.com/13380182/106585827-0c19cc00-6548-11eb-8a66-fed2649fda22.png">
+
 <img width="470" alt="cycle_gogo" src="https://user-images.githubusercontent.com/13380182/106576234-35812a80-653d-11eb-9aaf-ac634498e263.png">
+
+<img width="1131" alt="plain-cycle" src="https://user-images.githubusercontent.com/13380182/106585582-c5c46d00-6547-11eb-9bde-260c5d669821.png">
 
 #### DOT Graph
 
