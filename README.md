@@ -74,6 +74,16 @@ This project is licensed under Apache License Version 2.0 [![License](http://img
 
 ### Usage
 
+#### Apache Felix Gogo Command
+
+Note that, the command will only work if and only if Felix Gogo bundles are installed in the runtime.
+
+<img width="522" alt="gogo" src="https://user-images.githubusercontent.com/13380182/106575751-b4299800-653c-11eb-8378-81012ef2554a.png">
+
+#### DOT Graph
+
+![graph](https://user-images.githubusercontent.com/13380182/106575825-cc99b280-653c-11eb-894d-3d4e65de88fc.png)
+
 #### Examples in Action
 
 
