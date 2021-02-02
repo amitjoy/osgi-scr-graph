@@ -78,11 +78,23 @@ This project is licensed under Apache License Version 2.0 [![License](http://img
 
 Note that, the command will only work if and only if Felix Gogo bundles are installed in the runtime.
 
+##### Gogo Command - Graph Generation
+
 <img width="522" alt="gogo" src="https://user-images.githubusercontent.com/13380182/106575751-b4299800-653c-11eb-8378-81012ef2554a.png">
+
+##### Gogo Command - Cycle Detection
+
+<img width="470" alt="cycle_gogo" src="https://user-images.githubusercontent.com/13380182/106576234-35812a80-653d-11eb-9aaf-ac634498e263.png">
 
 #### DOT Graph
 
+##### SCR Runtime
+
 ![graph](https://user-images.githubusercontent.com/13380182/106575825-cc99b280-653c-11eb-894d-3d4e65de88fc.png)
+
+##### Cycle Detection
+
+![cycle](https://user-images.githubusercontent.com/13380182/106576461-6cefd700-653d-11eb-83af-da80272a5fb3.png)
 
 #### Examples in Action
 
