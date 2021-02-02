@@ -80,15 +80,19 @@ Note that, the command will only work if and only if Felix Gogo bundles are inst
 
 ##### Graph Generation
 
+<img width="503" alt="help-graph" src="https://user-images.githubusercontent.com/13380182/106591064-1a6ae680-654e-11eb-9efe-a460bbdd6d6f.png">
+
 <img width="522" alt="gogo" src="https://user-images.githubusercontent.com/13380182/106575751-b4299800-653c-11eb-8378-81012ef2554a.png">
 
 ##### Cycle Detection
 
-<img width="668" alt="help" src="https://user-images.githubusercontent.com/13380182/106585827-0c19cc00-6548-11eb-8a66-fed2649fda22.png">
+<img width="666" alt="help-cycle" src="https://user-images.githubusercontent.com/13380182/106591152-37071e80-654e-11eb-8e44-98a222345085.png">
 
 <img width="470" alt="cycle_gogo" src="https://user-images.githubusercontent.com/13380182/106576234-35812a80-653d-11eb-9aaf-ac634498e263.png">
 
 <img width="1131" alt="plain-cycle" src="https://user-images.githubusercontent.com/13380182/106585582-c5c46d00-6547-11eb-9bde-260c5d669821.png">
+
+<img width="474" alt="Screenshot 2021-02-02 at 12 01 20" src="https://user-images.githubusercontent.com/13380182/106591300-66b62680-654e-11eb-860d-c875e872ba7f.png">
 
 #### DOT Graph
 
