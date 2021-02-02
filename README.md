@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="563" alt="logo" src="https://user-images.githubusercontent.com/13380182/101778008-90754300-3af3-11eb-95da-91c54608f277.png" />
+  <img width="560" alt="logo" src="https://user-images.githubusercontent.com/76659596/106566061-10d28600-6530-11eb-8c3f-f2a3a579a005.png" />
 </p>
 
 ## OSGi Service Component Runtime (SCR) Graph
