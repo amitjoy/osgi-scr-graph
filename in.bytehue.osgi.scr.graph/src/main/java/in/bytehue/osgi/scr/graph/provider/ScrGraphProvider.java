@@ -44,6 +44,7 @@ import org.osgi.service.component.runtime.dto.SatisfiedReferenceDTO;
 
 import in.bytehue.osgi.scr.graph.api.ScrComponent;
 import in.bytehue.osgi.scr.graph.api.ScrGraph;
+import in.bytehue.osgi.scr.graph.provider.CircularLinkedList.Node;
 
 @Component
 public final class ScrGraphProvider implements ScrGraph {
@@ -74,13 +75,11 @@ public final class ScrGraphProvider implements ScrGraph {
         final List<Pair<ScrComponent, ScrComponent>> edges = new ArrayList<>();
 
         for (final List<ScrComponent> group : cycles) {
-            for (int i = 0, j = 0; i < group.size(); j = ++i) {
-                final Pair<ScrComponent, ScrComponent> pair = new Pair<>(group.get(i), group.get(j));
+            Node<ScrComponent> node = CircularLinkedList.createLinkedList(group);
+            for (int i = 0; i < group.size(); i++) {
+                node = node.getNext();
+                final Pair<ScrComponent, ScrComponent> pair = new Pair<>(node.getData(), node.getNext().getData());
                 edges.add(pair);
-                if (j == group.size()) {
-                    final Pair<ScrComponent, ScrComponent> cycle = new Pair<>(group.get(j), group.get(0));
-                    edges.add(cycle);
-                }
             }
         }
         return buildGraph(cycles.stream().flatMap(List::stream).collect(toList()), edges);
@@ -92,7 +91,6 @@ public final class ScrGraphProvider implements ScrGraph {
         exporter.setVertexAttributeProvider(v -> {
             final Map<String, Attribute> map = new LinkedHashMap<>();
             map.put("label", createAttribute(createVertexLabel(v)));
-            // TODO change format a bit for plain OSGi services
             return map;
         });
         exporter.exportGraph(graph, writer);
