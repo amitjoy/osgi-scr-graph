@@ -74,7 +74,11 @@ This project is licensed under Apache License Version 2.0 [![License](http://img
 
 ### Usage
 
+--------------------------------------------------------------------------------------------------------------
+
 #### Apache Felix Gogo Command
+
+--------------------------------------------------------------------------------------------------------------
 
 Note that, the command will only work if and only if Felix Gogo bundles are installed in the runtime.
 
@@ -94,7 +98,11 @@ Note that, the command will only work if and only if Felix Gogo bundles are inst
 
 <img width="474" alt="Screenshot 2021-02-02 at 12 01 20" src="https://user-images.githubusercontent.com/13380182/106591300-66b62680-654e-11eb-860d-c875e872ba7f.png">
 
+--------------------------------------------------------------------------------------------------------------
+
 #### DOT Graph
+
+--------------------------------------------------------------------------------------------------------------
 
 ##### SCR Runtime
 
@@ -103,6 +111,8 @@ Note that, the command will only work if and only if Felix Gogo bundles are inst
 ##### Cycle Detection
 
 ![cycle](https://user-images.githubusercontent.com/13380182/106576461-6cefd700-653d-11eb-83af-da80272a5fb3.png)
+
+--------------------------------------------------------------------------------------------------------------
 
 #### API Usage Examples
 
@@ -149,3 +159,9 @@ public final class GraphCycleFinder {
 
 }
 ```
+--------------------------------------------------------------------------------------------------------------
+### Converting DOT Graph Representation to PNG/SVG
+
+* `dot -Tpng filename.dot -o filename.png`
+* `dot -Tsvg filename.dot -o filename.svg`
+
