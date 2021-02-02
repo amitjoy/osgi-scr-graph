@@ -102,7 +102,7 @@ Note that, the command will only work if and only if Felix Gogo bundles are inst
 
 #### DOT Graph
 
-Copy the DOT graph representatation format to a file having an extension of `.dot` and execute the following to convert them to PNG/SVG
+Copy the DOT graph representation format to a file having an extension of `.dot` and execute the following to convert them to PNG/SVG
 
 * `dot -Tpng filename.dot -o filename.png`
 * `dot -Tsvg filename.dot -o filename.svg`
