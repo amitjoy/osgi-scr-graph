@@ -15,6 +15,7 @@
  ******************************************************************************/
 package in.bytehue.osgi.scr.graph.provider;
 
+import static in.bytehue.osgi.scr.graph.provider.ScrGraphHelper.createVertexLabel;
 import static java.util.stream.Collectors.toList;
 import static org.jgrapht.nio.DefaultAttribute.createAttribute;
 import static org.osgi.service.component.runtime.dto.ComponentConfigurationDTO.ACTIVE;
@@ -33,7 +34,6 @@ import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.nio.Attribute;
 import org.jgrapht.nio.dot.DOTExporter;
-import org.osgi.framework.Constants;
 import org.osgi.framework.dto.ServiceReferenceDTO;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -44,7 +44,8 @@ import org.osgi.service.component.runtime.dto.SatisfiedReferenceDTO;
 
 import in.bytehue.osgi.scr.graph.api.ScrComponent;
 import in.bytehue.osgi.scr.graph.api.ScrGraph;
-import in.bytehue.osgi.scr.graph.provider.CircularLinkedList.Node;
+import in.bytehue.osgi.scr.graph.provider.ScrGraphHelper.CircularLinkedList;
+import in.bytehue.osgi.scr.graph.provider.ScrGraphHelper.CircularLinkedList.Node;
 
 @Component
 public final class ScrGraphProvider implements ScrGraph {
@@ -94,14 +95,6 @@ public final class ScrGraphProvider implements ScrGraph {
             return map;
         });
         exporter.exportGraph(graph, writer);
-    }
-
-    private String createVertexLabel(final ScrComponent component) {
-        if (component.description != null) {
-            return component.description.name + " [" + component.configuration.id + "]";
-        }
-        final String objectClass = (String) component.reference.properties.get(Constants.OBJECTCLASS);
-        return objectClass + " [" + component.reference.id + "]";
     }
 
     private void prepareComponents(final List<ScrComponent> components) {

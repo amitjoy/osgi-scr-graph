@@ -1,6 +1,6 @@
 package in.bytehue.osgi.scr.graph.gogo;
 
-import static in.bytehue.osgi.scr.graph.gogo.GraphScrCommand.PID;
+import static in.bytehue.osgi.scr.graph.gogo.ScrGraphCommand.PID;
 import static java.util.Collections.emptyMap;
 import static org.osgi.framework.namespace.PackageNamespace.PACKAGE_NAMESPACE;
 

@@ -15,13 +15,15 @@
  ******************************************************************************/
 package in.bytehue.osgi.scr.graph.gogo;
 
-import static in.bytehue.osgi.scr.graph.gogo.GraphScrCommand.PID;
+import static in.bytehue.osgi.scr.graph.gogo.ScrGraphCommand.PID;
+import static java.util.stream.Collectors.joining;
 
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.List;
 
 import org.apache.felix.service.command.Descriptor;
+import org.apache.felix.service.command.Parameter;
 import org.apache.felix.service.command.annotations.GogoCommand;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultEdge;
@@ -30,11 +32,12 @@ import org.osgi.service.component.annotations.Reference;
 
 import in.bytehue.osgi.scr.graph.api.ScrComponent;
 import in.bytehue.osgi.scr.graph.api.ScrGraph;
+import in.bytehue.osgi.scr.graph.provider.ScrGraphHelper;
 
 @GogoCommand(scope = "scr", function = { "graph", "cycle" })
-@Component(service = GraphScrCommand.class, configurationPid = PID)
+@Component(service = ScrGraphCommand.class, configurationPid = PID)
 @Descriptor("Comprises Graph Commands for Service Component Runtime (SCR)")
-public final class GraphScrCommand {
+public final class ScrGraphCommand {
 
     public static final String PID = "in.bytehue.osgi.scr.graph.gogo";
 
@@ -52,16 +55,37 @@ public final class GraphScrCommand {
     }
 
     @Descriptor("Returns DOT Representation of Cyclic Dependencies of Service Component Runtime (SCR)")
-    public String cycle() {
+    public String cycle( //
+            @Descriptor("Displays the chains using simple textual representation") //
+            @Parameter(absentValue = "false", presentValue = "true", names = "-p") //
+            final boolean showPlain) {
+
         final List<List<ScrComponent>> cycles = scrGraph.getCycles();
+
         if (cycles.isEmpty()) {
             return "No SCR cycle exists";
         }
-        final Graph<ScrComponent, DefaultEdge> cyclesAsGraph = scrGraph.getCyclesAsGraph();
-        final Writer writer = new StringWriter();
-        scrGraph.exportGraph(cyclesAsGraph, writer);
+        if (!showPlain) {
+            final Graph<ScrComponent, DefaultEdge> cyclesAsGraph = scrGraph.getCyclesAsGraph();
+            final Writer writer = new StringWriter();
+            scrGraph.exportGraph(cyclesAsGraph, writer);
 
-        return writer.toString();
+            return writer.toString();
+        } else {
+            final StringBuilder builder = new StringBuilder();
+            int serial = 0;
+            for (final List<ScrComponent> group : cycles) {
+                // @formatter:off
+                builder.append(++serial + "> ");
+                builder.append(
+                        group.stream()
+                             .map(ScrGraphHelper::createVertexLabel)
+                             .collect(joining(" --> ")));
+                // @formatter:on
+                builder.append(System.lineSeparator());
+            }
+            return builder.toString();
+        }
     }
 
 }
