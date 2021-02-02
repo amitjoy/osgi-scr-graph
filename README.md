@@ -116,7 +116,7 @@ Note that, the command will only work if and only if Felix Gogo bundles are inst
 
 #### API Usage Examples
 
-* Generating Graph:
+##### Graph Generation:
 
 ```java
 @Component
@@ -136,7 +136,7 @@ public final class GraphGenrator {
 }
 ```
 
-* Cycle Detection:
+##### Cycle Detection:
 
 ```java
 @Component
@@ -160,7 +160,7 @@ public final class GraphCycleFinder {
 }
 ```
 --------------------------------------------------------------------------------------------------------------
-### Converting DOT Graph Representation to PNG/SVG
+### Conversion of DOT Graph Representation to PNG/SVG
 
 * `dot -Tpng filename.dot -o filename.png`
 * `dot -Tsvg filename.dot -o filename.svg`
