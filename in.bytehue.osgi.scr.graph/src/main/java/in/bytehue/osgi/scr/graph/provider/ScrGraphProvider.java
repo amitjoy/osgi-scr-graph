@@ -113,10 +113,7 @@ public final class ScrGraphProvider implements ScrGraph {
         for (final ComponentDescriptionDTO desc : scr.getComponentDescriptionDTOs()) {
             for (final ComponentConfigurationDTO configurationDTO : scr.getComponentConfigurationDTOs(desc)) {
                 if (configurationDTO.state == SATISFIED || configurationDTO.state == ACTIVE) {
-                    final ScrComponent componentName = createComponent( //
-                            desc, //
-                            configurationDTO, //
-                            configurationDTO.service); //
+                    final ScrComponent componentName = createComponent(desc, configurationDTO);
                     components.add(componentName);
                 }
             }
@@ -161,14 +158,12 @@ public final class ScrGraphProvider implements ScrGraph {
 
     private ScrComponent createComponent( //
             final ComponentDescriptionDTO description, //
-            final ComponentConfigurationDTO configuration, //
-            final ServiceReferenceDTO reference) {
+            final ComponentConfigurationDTO configuration) {
 
         final ScrComponent component = new ScrComponent();
 
         component.description = description;
         component.configuration = configuration;
-        component.reference = reference;
 
         return component;
     }

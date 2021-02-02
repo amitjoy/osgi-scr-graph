@@ -85,8 +85,8 @@ public final class ScrGraphCommand {
                 if (serialNo > cycles.size()) {
                     return "Not a valid serial number";
                 }
-                final Graph<ScrComponent, DefaultEdge> cyclesAsGraph = scrGraph
-                        .getCycleAsGraph(cycles.get(serialNo - 1));
+                final int serial = serialNo - 1;
+                final Graph<ScrComponent, DefaultEdge> cyclesAsGraph = scrGraph.getCycleAsGraph(cycles.get(serial));
                 final Writer writer = new StringWriter();
                 scrGraph.exportGraph(cyclesAsGraph, writer);
 
@@ -98,13 +98,8 @@ public final class ScrGraphCommand {
             for (final List<ScrComponent> group : cycles) {
                 final Function<ScrComponent, String> componentFn = //
                         c -> removeComponentName ? String.valueOf(c.configuration.id) : createVertexLabel(c);
-                // @formatter:off
-                    builder.append(++serial + "> ");
-                    builder.append(
-                            group.stream()
-                                 .map(componentFn)
-                                 .collect(joining(" --> ")));
-                    // @formatter:on
+                builder.append(++serial + "> ");
+                builder.append(group.stream().map(componentFn).collect(joining(" --> ")));
                 builder.append(System.lineSeparator());
             }
             return builder.toString();

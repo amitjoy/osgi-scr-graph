@@ -15,6 +15,7 @@
  ******************************************************************************/
 package in.bytehue.osgi.scr.graph.api;
 
+import org.osgi.dto.DTO;
 import org.osgi.service.component.runtime.dto.ComponentConfigurationDTO;
 import org.osgi.service.component.runtime.dto.ComponentDescriptionDTO;
 
@@ -28,7 +29,7 @@ import org.osgi.service.component.runtime.dto.ComponentDescriptionDTO;
  *
  * @NotThreadSafe
  */
-public class ScrComponent extends OSGiService {
+public class ScrComponent extends DTO {
 
     /**
      * The description of the component

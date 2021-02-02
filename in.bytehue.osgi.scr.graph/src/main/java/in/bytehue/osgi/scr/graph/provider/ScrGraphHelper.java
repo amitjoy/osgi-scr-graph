@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2021 Amit Kumar Mondal
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License.  You may obtain a copy
  * of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
@@ -16,8 +16,6 @@
 package in.bytehue.osgi.scr.graph.provider;
 
 import java.util.List;
-
-import org.osgi.framework.Constants;
 
 import in.bytehue.osgi.scr.graph.api.ScrComponent;
 
@@ -79,11 +77,7 @@ public final class ScrGraphHelper {
     }
 
     public static String createVertexLabel(final ScrComponent component) {
-        if (component.description != null) {
-            return component.description.name + " [" + component.configuration.id + "]";
-        }
-        final String objectClass = (String) component.reference.properties.get(Constants.OBJECTCLASS);
-        return objectClass + " [" + component.reference.id + "]";
+        return component.description.name + " [" + component.configuration.id + "]";
     }
 
 }
