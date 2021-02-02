@@ -102,6 +102,13 @@ Note that, the command will only work if and only if Felix Gogo bundles are inst
 
 #### DOT Graph
 
+Copy the DOT graph representatation format to a file having an extension of `.dot` and execute the following to convert them to PNG/SVG
+
+* `dot -Tpng filename.dot -o filename.png`
+* `dot -Tsvg filename.dot -o filename.svg`
+
+To install `dot`, please follow this [link](https://graphviz.org/download/)
+
 --------------------------------------------------------------------------------------------------------------
 
 ##### SCR Runtime
@@ -160,9 +167,3 @@ public final class GraphCycleFinder {
 }
 ```
 --------------------------------------------------------------------------------------------------------------
-### Conversion of DOT Graph Representation to PNG/SVG
-
-* `dot -Tpng filename.dot -o filename.png`
-* `dot -Tsvg filename.dot -o filename.svg`
-
-To install `dot`, please follow this [link](https://graphviz.org/download/)
