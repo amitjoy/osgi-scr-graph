@@ -165,3 +165,4 @@ public final class GraphCycleFinder {
 * `dot -Tpng filename.dot -o filename.png`
 * `dot -Tsvg filename.dot -o filename.svg`
 
+To install `dot`, please follow this [link](https://graphviz.org/download/)
