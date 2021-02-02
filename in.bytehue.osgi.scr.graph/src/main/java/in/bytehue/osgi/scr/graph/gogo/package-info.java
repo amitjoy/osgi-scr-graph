@@ -1,1 +1,0 @@
-package in.bytehue.osgi.scr.graph.gogo;

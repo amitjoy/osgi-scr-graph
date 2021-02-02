@@ -13,31 +13,25 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  ******************************************************************************/
-package in.bytehue.osgi.scr.graph.api;
+package in.bytehue.osgi.scr.graph.gogo;
 
-import org.osgi.service.component.runtime.dto.ComponentConfigurationDTO;
-import org.osgi.service.component.runtime.dto.ComponentDescriptionDTO;
+import org.apache.felix.service.command.Descriptor;
+import org.apache.felix.service.command.annotations.GogoCommand;
+import org.osgi.service.component.annotations.Component;
 
-/**
- * Data Transfer Object for an instance of SCR component.
- *
- * <p>
- * A SCR component contains associated description and its configuration.
- *
- * @noextend This class is not intended to be extended by consumers.
- *
- * @NotThreadSafe
- */
-public class ScrComponent extends OSGiService {
+@GogoCommand(scope = "graph", function = { "scr", "cycle" })
+@Component(service = GraphScrCommand.class, immediate = false)
+@Descriptor("Comprises Graph Commands for Service Component Runtime (SCR)")
+public final class GraphScrCommand {
 
-    /**
-     * The description of the component
-     */
-    public ComponentDescriptionDTO description;
+    @Descriptor("Returns DOT Representation of Service Component Runtime (SCR)")
+    public String scr() {
+        return null;
+    }
 
-    /**
-     * The configuration of the component
-     */
-    public ComponentConfigurationDTO configuration;
+    @Descriptor("Returns DOT Representation of Cyclic Dependencies of Service Component Runtime (SCR)")
+    public String cycle() {
+        return null;
+    }
 
 }

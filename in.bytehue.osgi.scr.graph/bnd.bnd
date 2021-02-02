@@ -1,1 +1,14 @@
--buildpath: org.jgrapht.core
+Bundle-Name                             : Service Component Runtime (SCR) Graph
+-buildpath                              : \
+	org.apache.felix.gogo.runtime,\
+	org.jgrapht.core,\
+	org.jgrapht.io
+
+-privatepackage                         : in.bytehue.*
+Export-Package                          : org.jgrapht.* 
+Import-Package: \
+	!org.antlr.*,\
+	!org.apache.commons.text.*,\
+	!org.jheaps.*,\
+	org.apache.felix.service.command;'resolution:'=optional,\
+	*
