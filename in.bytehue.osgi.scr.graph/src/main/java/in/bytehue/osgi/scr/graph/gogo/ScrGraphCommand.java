@@ -16,11 +16,13 @@
 package in.bytehue.osgi.scr.graph.gogo;
 
 import static in.bytehue.osgi.scr.graph.gogo.ScrGraphCommand.PID;
+import static in.bytehue.osgi.scr.graph.provider.ScrGraphHelper.createVertexLabel;
 import static java.util.stream.Collectors.joining;
 
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.List;
+import java.util.function.Function;
 
 import org.apache.felix.service.command.Descriptor;
 import org.apache.felix.service.command.Parameter;
@@ -32,7 +34,6 @@ import org.osgi.service.component.annotations.Reference;
 
 import in.bytehue.osgi.scr.graph.api.ScrComponent;
 import in.bytehue.osgi.scr.graph.api.ScrGraph;
-import in.bytehue.osgi.scr.graph.provider.ScrGraphHelper;
 
 @GogoCommand(scope = "scr", function = { "graph", "cycle" })
 @Component(service = ScrGraphCommand.class, configurationPid = PID)
@@ -58,7 +59,11 @@ public final class ScrGraphCommand {
     public String cycle( //
             @Descriptor("Displays the chains using simple textual representation") //
             @Parameter(absentValue = "false", presentValue = "true", names = "-p") //
-            final boolean showPlain) {
+            final boolean showPlain,
+            //
+            @Descriptor("Displays the chain without SCR component names") //
+            @Parameter(absentValue = "false", presentValue = "true", names = "-r") //
+            final boolean removeComponentName) {
 
         final List<List<ScrComponent>> cycles = scrGraph.getCycles();
 
@@ -75,11 +80,13 @@ public final class ScrGraphCommand {
             final StringBuilder builder = new StringBuilder();
             int serial = 0;
             for (final List<ScrComponent> group : cycles) {
+                final Function<ScrComponent, String> componentFn = //
+                        c -> removeComponentName ? String.valueOf(c.configuration.id) : createVertexLabel(c);
                 // @formatter:off
                 builder.append(++serial + "> ");
                 builder.append(
                         group.stream()
-                             .map(ScrGraphHelper::createVertexLabel)
+                             .map(componentFn)
                              .collect(joining(" --> ")));
                 // @formatter:on
                 builder.append(System.lineSeparator());
