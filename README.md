@@ -78,11 +78,11 @@ This project is licensed under Apache License Version 2.0 [![License](http://img
 
 Note that, the command will only work if and only if Felix Gogo bundles are installed in the runtime.
 
-##### Gogo Command - Graph Generation
+##### Graph Generation
 
 <img width="522" alt="gogo" src="https://user-images.githubusercontent.com/13380182/106575751-b4299800-653c-11eb-8378-81012ef2554a.png">
 
-##### Gogo Command - Cycle Detection
+##### Cycle Detection
 
 <img width="668" alt="help" src="https://user-images.githubusercontent.com/13380182/106585827-0c19cc00-6548-11eb-8a66-fed2649fda22.png">
 
@@ -100,8 +100,7 @@ Note that, the command will only work if and only if Felix Gogo bundles are inst
 
 ![cycle](https://user-images.githubusercontent.com/13380182/106576461-6cefd700-653d-11eb-83af-da80272a5fb3.png)
 
-#### Examples in Action
-
+#### API Usage Examples
 
 * Generating Graph:
 
