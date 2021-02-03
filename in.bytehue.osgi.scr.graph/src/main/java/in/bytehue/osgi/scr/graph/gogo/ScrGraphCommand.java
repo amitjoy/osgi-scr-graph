@@ -65,7 +65,7 @@ public final class ScrGraphCommand {
             @Parameter(absentValue = "false", presentValue = "true", names = "-r") //
             final boolean removeComponentName,
             //
-            @Descriptor("Returns the DOT of the cycle having this serial number") //
+            @Descriptor("Returns the DOT representation of the cycle with this serial number") //
             @Parameter(absentValue = "0", names = "-no") //
             final int serialNo) {
 

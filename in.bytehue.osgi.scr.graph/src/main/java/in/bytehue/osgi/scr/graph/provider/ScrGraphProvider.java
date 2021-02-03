@@ -60,6 +60,7 @@ public final class ScrGraphProvider implements ScrGraph {
 
         prepareComponents(components);
         prepareEdges(components, edges);
+
         return buildGraph(components, edges);
     }
 
@@ -67,6 +68,7 @@ public final class ScrGraphProvider implements ScrGraph {
     public List<List<ScrComponent>> getCycles() {
         final Graph<ScrComponent, DefaultEdge> graph = getGraph();
         final TarjanSimpleCycles<ScrComponent, DefaultEdge> tarjan = new TarjanSimpleCycles<>(graph);
+
         return tarjan.findSimpleCycles();
     }
 
@@ -74,6 +76,7 @@ public final class ScrGraphProvider implements ScrGraph {
     public Graph<ScrComponent, DefaultEdge> getCycleAsGraph(final List<ScrComponent> components) {
         final List<Pair<ScrComponent, ScrComponent>> edges = new ArrayList<>();
         Node<ScrComponent> node = CircularLinkedList.createLinkedList(components);
+
         for (int i = 0; i < components.size(); i++) {
             node = node.getNext();
             final Pair<ScrComponent, ScrComponent> pair = new Pair<>(node.getData(), node.getNext().getData());
@@ -101,6 +104,7 @@ public final class ScrGraphProvider implements ScrGraph {
     @Override
     public void exportGraph(final Graph<ScrComponent, DefaultEdge> graph, final Writer writer) {
         final DOTExporter<ScrComponent, DefaultEdge> exporter = new DOTExporter<>();
+
         exporter.setVertexAttributeProvider(v -> {
             final Map<String, Attribute> map = new LinkedHashMap<>();
             map.put("label", createAttribute(createVertexLabel(v)));
@@ -151,8 +155,10 @@ public final class ScrGraphProvider implements ScrGraph {
             final List<Pair<ScrComponent, ScrComponent>> edges) {
 
         final Graph<ScrComponent, DefaultEdge> graph = new DefaultDirectedGraph<>(DefaultEdge.class);
+
         components.forEach(graph::addVertex);
         edges.forEach(edge -> graph.addEdge(edge.getFirst(), edge.getSecond()));
+
         return graph;
     }
 
