@@ -2,8 +2,6 @@
   <img width="560" alt="logo" src="https://user-images.githubusercontent.com/76659596/106566061-10d28600-6530-11eb-8c3f-f2a3a579a005.png" />
 </p>
 
-## OSGi Service Component Runtime (SCR) Graph
-
 This repository comprises the API and optional Apache Felix Gogo Command to generate a DOT graph representation of the Service Component Runtime (SCR).
 
 ----------------------------------------------------------------------------------------------------------
