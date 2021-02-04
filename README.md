@@ -26,7 +26,7 @@ This repository comprises the API and optional Apache Felix Gogo Command to gene
 
 This project comprises the following list of bundles - 
 
-1. `in.bytehue.osgi.scr.graph` - The SCR Graph API and Implementation
+1. `in.bytehue.osgi.scr.graph` - The Service Component Runtime(SCR) Graph API and Implementation
 2. `in.bytehue.osgi.scr.graph.example` - Example project for usages
 
 ---------------------------------------------------------------------------------------------------------------
