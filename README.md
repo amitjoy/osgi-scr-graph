@@ -22,7 +22,7 @@ This repository comprises the API and optional Apache Felix Gogo Command to gene
 
 -----------------------------------------------------------------------------------------------------------
 
-### Dependencies
+### Modules
 
 This project comprises the following list of bundles - 
 
