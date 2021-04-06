@@ -105,7 +105,7 @@ Copy the DOT graph representation format to a file having an extension of `.dot`
 * `dot -Tpng filename.dot -o filename.png`
 * `dot -Tsvg filename.dot -o filename.svg`
 
-To install `dot`, please follow this [link](https://graphviz.org/download/)
+To install `dot` in your computer, please follow this [link](https://graphviz.org/download/)
 
 --------------------------------------------------------------------------------------------------------------
 
