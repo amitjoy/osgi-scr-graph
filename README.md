@@ -78,7 +78,7 @@ This project is licensed under Apache License Version 2.0 [![License](http://img
 
 --------------------------------------------------------------------------------------------------------------
 
-Note that, the command will only work if and only if Felix Gogo bundles are installed in the OSGi runtime.
+<b>Note that</b>, the command will only work if and only if Felix Gogo bundles are installed in the OSGi runtime.
 
 ##### Graph Generation
 
