@@ -5,14 +5,12 @@
 This repository comprises the API and optional Apache Felix Gogo Command to generate a DOT graph of the Service Component Runtime (SCR).
 
 ----------------------------------------------------------------------------------------------------------
-
 [![amitjoy - osgi-scr-graph](https://img.shields.io/static/v1?label=amitjoy&message=osgi-scr-graph&color=blue&logo=github)](https://github.com/amitjoy/osgi-scr-graph)
 [![stars - osgi-scr-graph](https://img.shields.io/github/stars/amitjoy/osgi-scr-graph?style=social)](https://github.com/amitjoy/osgi-scr-graph)
 [![forks - osgi-scr-graph](https://img.shields.io/github/forks/amitjoy/osgi-scr-graph?style=social)](https://github.com/amitjoy/osgi-scr-graph)
 [![License - Apache](https://img.shields.io/badge/License-Apache-blue)](#license)
 [![Build - Passing](https://img.shields.io/badge/Build-Passing-brightgreen)](https://github.com/amitjoy/osgi-scr-graph/runs/1485969918)
 [![GitHub release](https://img.shields.io/github/release/amitjoy/osgi-scr-graph?include_prereleases&sort=semver)](https://github.com/amitjoy/osgi-scr-graph/releases/)
-
 -----------------------------------------------------------------------------------------------------------
 
 ### Minimum Requirements
@@ -121,6 +119,8 @@ To install `dot` in your computer, please follow this [link](https://graphviz.or
 
 #### API Usage Examples
 
+--------------------------------------------------------------------------------------------------------------
+
 ##### Graph Generation:
 
 ```java
@@ -140,6 +140,7 @@ public final class GraphGenrator {
     }
 }
 ```
+--------------------------------------------------------------------------------------------------------------
 
 ##### Cycle Detection:
 
