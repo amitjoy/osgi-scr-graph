@@ -111,6 +111,8 @@ public interface ScrGraph {
      * hence multiple invocations of this method will result in same results.
      *
      * @return the {@link Graph} instance
+     *
+     * @see #getCycles()
      */
     Graph<ScrComponent, DefaultEdge> getCyclesAsGraph();
 
