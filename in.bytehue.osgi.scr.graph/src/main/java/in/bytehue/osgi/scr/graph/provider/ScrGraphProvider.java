@@ -78,7 +78,7 @@ public final class ScrGraphProvider implements ScrGraph {
     public Graph<ScrComponent, DefaultEdge> getCycleAsGraph(final List<ScrComponent> components) {
 
         final List<Pair<ScrComponent, ScrComponent>> edges = new ArrayList<>();
-        Node<ScrComponent> node = CircularLinkedList.createLinkedList(components);
+        Node<ScrComponent> node = CircularLinkedList.create(components);
 
         for (int i = 0; i < components.size(); i++) {
             node = node.getNext();
@@ -95,7 +95,7 @@ public final class ScrGraphProvider implements ScrGraph {
         final List<Pair<ScrComponent, ScrComponent>> edges = new ArrayList<>();
 
         for (final List<ScrComponent> group : cycles) {
-            Node<ScrComponent> node = CircularLinkedList.createLinkedList(group);
+            Node<ScrComponent> node = CircularLinkedList.create(group);
             for (int i = 0; i < group.size(); i++) {
                 node = node.getNext();
                 final Pair<ScrComponent, ScrComponent> pair = new Pair<>(node.getData(), node.getNext().getData());

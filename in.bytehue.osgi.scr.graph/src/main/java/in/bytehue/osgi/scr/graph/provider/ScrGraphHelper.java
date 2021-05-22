@@ -53,7 +53,7 @@ public final class ScrGraphHelper {
             }
         }
 
-        public static Node<ScrComponent> createLinkedList(final List<ScrComponent> components) {
+        public static Node<ScrComponent> create(final List<ScrComponent> components) {
             Node<ScrComponent> nodeTop = null;
             if (components == null || components.isEmpty()) {
                 return nodeTop;
