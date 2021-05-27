@@ -22,6 +22,6 @@ import org.osgi.service.component.annotations.Reference;
 public class ComponentA {
 
     @Reference
-    private ComponentB compB;
+    private ComponentB componentB;
 
 }

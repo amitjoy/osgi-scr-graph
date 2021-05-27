@@ -24,6 +24,6 @@ import org.osgi.service.component.annotations.Reference;
 public class ComponentB {
 
     @Reference(cardinality = OPTIONAL)
-    private ComponentC compC;
+    private ComponentC componentC;
 
 }
