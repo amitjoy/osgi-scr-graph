@@ -26,7 +26,7 @@ import org.osgi.annotation.versioning.ProviderType;
  * The {@link ScrGraph} service is the application access point to the
  * Service Component runtime (SCR) graph functionality. It is used to
  * create a graph from the SCR. It is also used to inspect the SCR
- * cycles. Since the API depends of JGraphT, this bundle also
+ * cycles. Since the API depends of <b>JGraphT</b>, this bundle also
  * packages the APIs of <b>JGraphT</b> so that you can make use of other
  * graph algorithms to perform your custom operations.
  *
