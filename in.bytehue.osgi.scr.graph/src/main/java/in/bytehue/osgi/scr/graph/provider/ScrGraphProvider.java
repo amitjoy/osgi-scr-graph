@@ -144,7 +144,7 @@ public final class ScrGraphProvider implements ScrGraph {
                 for (final ServiceReferenceDTO srvRefDTO : srvRefDTOs) {
                     final String componentNameProperty = (String) srvRefDTO.properties.get(COMPONENT_NAME_PROPERTY);
                     ScrComponent endComponent = null;
-                    if (componentNameProperty == null) { // not an SCR
+                    if (componentNameProperty == null) { // not a DS component
                         break;
                     }
                     endComponent = findComponentByName(components, componentNameProperty);
