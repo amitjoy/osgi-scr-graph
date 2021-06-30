@@ -41,6 +41,8 @@ import org.osgi.annotation.versioning.ProviderType;
  * @noextend This interface is not intended to be extended by consumers.
  *
  * @ThreadSafe
+ *
+ * @see ScrComponent
  */
 @ProviderType
 public interface ScrGraph {

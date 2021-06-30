@@ -28,6 +28,9 @@ import org.osgi.service.component.runtime.dto.ComponentDescriptionDTO;
  * @noextend This class is not intended to be extended by consumers.
  *
  * @NotThreadSafe
+ *
+ * @see ComponentDescriptionDTO
+ * @see ComponentConfigurationDTO
  */
 public class ScrComponent extends DTO {
 
