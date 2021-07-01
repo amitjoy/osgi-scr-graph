@@ -132,7 +132,7 @@ public final class ScrGraphProvider implements ScrGraph {
             final List<ScrComponent> components, //
             final List<Pair<ScrComponent, ScrComponent>> edges) {
 
-        final String COMPONENT_NAME_PROPERTY = "component.name";
+        final String componentNameProperty = "component.name";
 
         for (final ScrComponent component : components) {
             final ComponentConfigurationDTO dto = component.configuration;
@@ -142,9 +142,9 @@ public final class ScrGraphProvider implements ScrGraph {
                 final ServiceReferenceDTO[] srvRefDTOs = refDTO.boundServices;
 
                 for (final ServiceReferenceDTO srvRefDTO : srvRefDTOs) {
-                    final String componentNameProperty = (String) srvRefDTO.properties.get(COMPONENT_NAME_PROPERTY);
+                    final String property = (String) srvRefDTO.properties.get(componentNameProperty);
                     ScrComponent endComponent = null;
-                    if (componentNameProperty == null) { // not a DS component
+                    if (property == null) { // not a DS component
                         break;
                     }
                     endComponent = findComponentByName(components, componentNameProperty);
