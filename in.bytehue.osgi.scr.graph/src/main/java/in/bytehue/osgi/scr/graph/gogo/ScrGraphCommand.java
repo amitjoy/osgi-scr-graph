@@ -37,7 +37,7 @@ import in.bytehue.osgi.scr.graph.api.ScrGraph;
 
 @GogoCommand(scope = "scr", function = { "graph", "cycle" })
 @Component(service = ScrGraphCommand.class, configurationPid = PID)
-@Descriptor("Comprises Graph Commands for Service Component Runtime (SCR)")
+@Descriptor("Graph Commands for Service Component Runtime (SCR)")
 public final class ScrGraphCommand {
 
     public static final String PID = "in.bytehue.osgi.scr.graph.gogo";
