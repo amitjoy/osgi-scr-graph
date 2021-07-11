@@ -15,6 +15,8 @@
  ******************************************************************************/
 package in.bytehue.osgi.scr.graph.provider;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.List;
 
 import in.bytehue.osgi.scr.graph.api.ScrComponent;
@@ -37,6 +39,7 @@ public final class ScrGraphHelper {
             private Node<E> next;
 
             public Node(final E data) {
+                requireNonNull(data, "'data' cannot be null");
                 this.data = data;
             }
 
@@ -49,6 +52,7 @@ public final class ScrGraphHelper {
             }
 
             public void setNext(final Node<E> next) {
+                requireNonNull(next, "'next' node cannot be null");
                 this.next = next;
             }
         }
