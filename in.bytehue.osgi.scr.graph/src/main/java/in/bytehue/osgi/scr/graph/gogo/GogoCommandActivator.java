@@ -38,11 +38,12 @@ public final class GogoCommandActivator {
     private static final String GOGO_PACKAGE = "org.apache.felix.service.command";
 
     private final BundleContext bundleContext;
-    private final ConfigurationAdmin configAdmin;
+    private final ConfigurationAdmin configurationAdmin;
 
     @Activate
-    public GogoCommandActivator(final BundleContext bundleContext, @Reference final ConfigurationAdmin configAdmin) {
-        this.configAdmin = configAdmin;
+    public GogoCommandActivator(final BundleContext bundleContext,
+            @Reference final ConfigurationAdmin configurationAdmin) {
+        this.configurationAdmin = configurationAdmin;
         this.bundleContext = bundleContext;
 
         if (isGogoPackageImported()) {
@@ -63,7 +64,7 @@ public final class GogoCommandActivator {
 
     private void createGogoCommandConfig() {
         try {
-            final Configuration configuration = configAdmin.getConfiguration(PID, "?");
+            final Configuration configuration = configurationAdmin.getConfiguration(PID, "?");
             configuration.updateIfDifferent(new Hashtable<>(emptyMap()));
         } catch (final IOException e) {
             // ignore due to location check as it's never gonna happen
@@ -73,7 +74,7 @@ public final class GogoCommandActivator {
     @Deactivate
     private void deleteGogoCommandConfig() {
         try {
-            final Configuration configuration = configAdmin.getConfiguration(PID, "?");
+            final Configuration configuration = configurationAdmin.getConfiguration(PID, "?");
             configuration.delete();
         } catch (final IOException e) {
             // ignore due to location check as it's never gonna happen
