@@ -98,9 +98,13 @@ public final class ScrGraphCommand {
             for (final List<ScrComponent> group : cycles) {
                 final Function<ScrComponent, String> componentFn = //
                         c -> removeComponentName ? String.valueOf(c.configuration.id) : createVertexLabel(c);
-                builder.append(++serial + "> ");
-                builder.append(group.stream().map(componentFn).collect(joining(" --> ")));
-                builder.append(System.lineSeparator());
+                // @formatter:off
+                builder.append(++serial + "> ")
+                       .append(group.stream()
+                                    .map(componentFn)
+                                    .collect(joining(" --> ")))
+                       .append(System.lineSeparator());
+                // @formatter:on
             }
             return builder.toString();
         }
