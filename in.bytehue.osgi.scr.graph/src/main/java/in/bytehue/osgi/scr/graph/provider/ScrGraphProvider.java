@@ -55,7 +55,6 @@ public final class ScrGraphProvider implements ScrGraph {
 
     @Override
     public Graph<ScrComponent, DefaultEdge> getGraph() {
-
         final List<ScrComponent> components = new ArrayList<>();
         final List<Pair<ScrComponent, ScrComponent>> edges = new ArrayList<>();
 
@@ -67,7 +66,6 @@ public final class ScrGraphProvider implements ScrGraph {
 
     @Override
     public List<List<ScrComponent>> getCycles() {
-
         final Graph<ScrComponent, DefaultEdge> graph = getGraph();
         final TarjanSimpleCycles<ScrComponent, DefaultEdge> tarjan = new TarjanSimpleCycles<>(graph);
 
@@ -76,7 +74,6 @@ public final class ScrGraphProvider implements ScrGraph {
 
     @Override
     public Graph<ScrComponent, DefaultEdge> getCycleAsGraph(final List<ScrComponent> components) {
-
         final List<Pair<ScrComponent, ScrComponent>> edges = new ArrayList<>();
         Node<ScrComponent> node = CircularLinkedList.create(components);
 
@@ -90,7 +87,6 @@ public final class ScrGraphProvider implements ScrGraph {
 
     @Override
     public Graph<ScrComponent, DefaultEdge> getCyclesAsGraph() {
-
         final List<List<ScrComponent>> cycles = getCycles();
         final List<Pair<ScrComponent, ScrComponent>> edges = new ArrayList<>();
 
