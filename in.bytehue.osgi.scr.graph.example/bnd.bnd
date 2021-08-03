@@ -1,1 +1,14 @@
-Bundle-Name: OSGi SCR Graph Example
+Bundle-Name                             : OSGi SCR Graph Example
+-runrequires                            : bnd.identity;id='in.bytehue.osgi.scr.graph',\
+                                          bnd.identity;id='in.bytehue.osgi.scr.graph.example',\
+                                          bnd.identity;id='org.apache.felix.gogo.runtime'
+
+-runbundles                             : in.bytehue.osgi.scr.graph,\
+                                          org.apache.felix.gogo.command,\
+                                          org.apache.felix.gogo.runtime,\
+                                          org.apache.felix.gogo.shell,\
+                                          org.apache.felix.scr,\
+                                          org.osgi.util.function,\
+                                          org.osgi.util.promise,\
+                                          org.apache.felix.configadmin,\
+                                          in.bytehue.osgi.scr.graph.example
