@@ -48,7 +48,7 @@ import org.osgi.annotation.versioning.ProviderType;
 public interface ScrGraph {
 
     /**
-     * Returns a graph from the Service Component Runtime (SCR).
+     * Returns a graph from the Service Component Runtime (SCR)
      *
      * <p>
      * <b>Note that</b>,, it will not include any service reference which
@@ -64,7 +64,7 @@ public interface ScrGraph {
 
     /**
      * Returns a list containing all the list of components that
-     * for a cycle (SCR).
+     * for a cycle (SCR)
      *
      * <p>
      * <b>Note that</b>, by default it makes use of Tarjan algorithm to
