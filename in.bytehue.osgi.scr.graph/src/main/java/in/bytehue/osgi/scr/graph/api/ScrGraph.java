@@ -51,7 +51,7 @@ public interface ScrGraph {
      * Returns a graph from the Service Component Runtime (SCR)
      *
      * <p>
-     * <b>Note that</b>,, it will not include any service reference which
+     * <b>Note that</b>, it will not include any service reference which
      * is not exported using OSGi Declarative Services.
      *
      * <p>
