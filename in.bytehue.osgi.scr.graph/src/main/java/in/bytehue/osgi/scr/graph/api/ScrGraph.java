@@ -43,6 +43,8 @@ import org.osgi.annotation.versioning.ProviderType;
  * @ThreadSafe
  *
  * @see ScrComponent
+ * @see Graph
+ * @see DefaultEdge
  */
 @ProviderType
 public interface ScrGraph {
