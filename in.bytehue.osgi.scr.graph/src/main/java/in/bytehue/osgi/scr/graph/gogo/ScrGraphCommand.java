@@ -45,7 +45,7 @@ public final class ScrGraphCommand {
     @Reference
     private ScrGraph scrGraph;
 
-    @Descriptor("Returns DOT Representation of Service Component Runtime (SCR)")
+    @Descriptor("Returns Graphviz DOT Representation of Service Component Runtime (SCR)")
     public String graph() {
         final Graph<ScrComponent, DefaultEdge> graph = scrGraph.getGraph();
 
@@ -55,7 +55,7 @@ public final class ScrGraphCommand {
         return writer.toString();
     }
 
-    @Descriptor("Returns DOT Representation of Cyclic Dependencies of Service Component Runtime (SCR)")
+    @Descriptor("Returns Graphviz DOT Representation of Cyclic Dependencies of Service Component Runtime (SCR)")
     public String cycle( //
             @Descriptor("Displays the chains using simple textual representation") //
             @Parameter(absentValue = "false", presentValue = "true", names = "-p") //
@@ -65,7 +65,7 @@ public final class ScrGraphCommand {
             @Parameter(absentValue = "false", presentValue = "true", names = "-r") //
             final boolean removeComponentName,
             //
-            @Descriptor("Returns the DOT representation of the cycle with this serial number") //
+            @Descriptor("Returns the Graphviz DOT representation of the cycle with this serial number") //
             @Parameter(absentValue = "0", names = "-no") //
             final int serialNo) {
 
