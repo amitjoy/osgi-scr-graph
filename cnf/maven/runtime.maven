@@ -27,7 +27,7 @@ org.apache.felix:org.apache.felix.inventory:1.1.0
 org.apache.felix:org.apache.felix.log:1.2.4
 org.apache.felix:org.apache.felix.metatype:1.2.4
 org.apache.felix:org.apache.felix.rootcause:0.1.0
-org.apache.felix:org.apache.felix.scr:2.1.26
+org.apache.felix:org.apache.felix.scr:2.1.30
 org.apache.felix:org.apache.felix.useradmin:1.0.4
 org.osgi:org.osgi.util.function:1.1.0
 org.osgi:org.osgi.util.promise:1.1.1
