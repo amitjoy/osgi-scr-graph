@@ -55,7 +55,7 @@ public final class ScrGraphCommand {
         return writer.toString();
     }
 
-    @Descriptor("Returns Graphviz DOT Representation of Cyclic Dependencies of Service Component Runtime (SCR)")
+    @Descriptor("Returns GraphViz DOT Representation of Cyclic Dependencies of Service Component Runtime (SCR)")
     public String cycle( //
             @Descriptor("Displays the chains using simple textual representation") //
             @Parameter(absentValue = "false", presentValue = "true", names = "-p") //
